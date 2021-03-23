@@ -26,6 +26,10 @@ example();
 //So the code above shows "done!" in one second.
 
 /* ------- PRACTICE EXAMPLE ------- */
+const movieList = document.querySelector(".movie-list");
+const movieListItem = document.createElement('li');
+const movieListHeading = document.createElement('h3');
+const movieListBody = document.createElement('p');
 
 const movies = [
     { 
@@ -39,11 +43,20 @@ const movies = [
 ]
 
 function getMovies() {
-    setTimeout(() => {
-        movies.forEach((movie, index) => {
+   setTimeout(() => {
+        movies.forEach((movie) => {
             console.log(movie.title)
+            outputMovies(movie.title, movie.body);    
         })
-    }, 1000);
+    }, 0000); 
+}
+
+function outputMovies(a, b) {
+    movieListHeading.innerHTML = a;
+    movieListBody.innerText = b;
+    movieListItem.appendChild(movieListHeading);
+    movieListItem.appendChild(movieListBody);
+    movieList.appendChild(movieListItem);    
 }
 
 function createMovie(movie) {
@@ -52,17 +65,17 @@ function createMovie(movie) {
             movies.push(movie);
 
             const error = false;
-
+            
             if(!error) {
                 resolve();
             } else {
                 reject('Error: Something went wrong!')
             }
-        }, 2000)
+        }, 1000)
     })
 }
 
-async function init() {
+async function init() {  
     await createMovie(
     {
         title: `Return of the Jedi`,
@@ -70,6 +83,7 @@ async function init() {
     });
     
     getMovies(); //(*)
+    console.log(movies);
 }
 
 init();
