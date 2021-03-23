@@ -9,7 +9,7 @@
 //Rejected: onRejected() will be called (for example, reject() was called).
 //Pending: not yet fulfilled or rejected.
 
-//------- EXAMPLE -------
+/* ------- EXAMPLE ------- */
 //Promise takes two parameters, resolve and reject.
 //When something goes wrong, reject is called, or else resolve is called.
 

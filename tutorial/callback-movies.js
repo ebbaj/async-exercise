@@ -1,3 +1,5 @@
+//Tutorial: https://www.freecodecamp.org/news/async-await-in-javascript/
+
 //Callback functions are those functions that have been passed to another function as an argument.
 
 const movies = [
@@ -11,6 +13,8 @@ const movies = [
     }
 ]
 
+console.log("CALLBACK:");
+
 function getMovies() {
     setTimeout(() => {
         movies.forEach((movie, index) => {
@@ -19,6 +23,9 @@ function getMovies() {
     }, 1000);
 }
 
+//Before we added the callback function, getMovies() would run before createMovie() (due to the time in the setTimeout), and therefore not display the new movie that was added in createMovie().
+//In createMovie(), pass a function callback and call the function right after the new movie is pushed (instead of waiting two seconds).
+
 function createMovie(movie, callback) {
     setTimeout(() => {
         movies.push(movie);
@@ -26,7 +33,10 @@ function createMovie(movie, callback) {
     }, 2000);
 }
 
-createMovie({
+//Call getMovies() when creating a new movie (insted of above it).
+
+createMovie(
+    {
     title: `Return of the Jedi`,
     body: `Luke Skywalker attempts to bring his father back to the light side of the Force. At the same time, the rebels hatch a plan to destroy the second Death Star.`
-}, getMovies)
+    }, getMovies)
