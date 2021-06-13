@@ -1,6 +1,5 @@
 // Your task
 
-// https://restcountries.eu
 
 /**
   1. Fetch all regions in the world (no duplicates)
